@@ -30,7 +30,7 @@ public class User {
 	@Id //Primary Key
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; // auto_increment
-	@Column(nullable = false , length = 30)
+	@Column(nullable = false , length = 30, unique = true)
 	private String username;
 	@Column(nullable = false , length = 100)
 	private String password;
