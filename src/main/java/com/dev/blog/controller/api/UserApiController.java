@@ -13,15 +13,16 @@ import com.dev.blog.service.UserService;
 
 @RestController
 public class UserApiController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@PostMapping("/api/user")
 	public ResponseDto<Integer> save(@RequestBody User user) {
 		System.out.println("userApiController:save ");
 		user.setPrivilege(Privilege.USER);
 		int result = userService.save(user);
-		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
+
 }

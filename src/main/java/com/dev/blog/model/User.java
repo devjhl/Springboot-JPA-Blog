@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 import org.eclipse.jdt.internal.compiler.ast.FalseLiteral;
 import org.hibernate.annotations.ColumnDefault;
@@ -32,9 +34,11 @@ public class User {
 	private int id; // auto_increment
 	@Column(nullable = false , length = 30, unique = true)
 	private String username;
+	
 	@Column(nullable = false , length = 100)
 	private String password;
-	@Column(nullable = false , length = 50)
+
+	@Column(nullable = false , length = 50, unique = true)
 	private String email;
 	@Enumerated(EnumType.STRING)
 	private Privilege privilege; 
