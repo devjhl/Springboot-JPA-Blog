@@ -1,6 +1,5 @@
 package com.dev.blog.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -28,13 +27,16 @@ public class UserService {
 		}
 		return -1;
 	}
-
-	@Transactional
-	public User idDuplicate(String username) {
-		User user = userRepository.findByUsername(username).orElseGet(() -> {
-			return new User();
-		});
+	
+	public User idCheck(String username) {
+		User user = userRepository.findByUsername(username); 
+		return user; 
+	}
+	
+	public User emailCheck(String email) {
+		User user = userRepository.findByEmail(email);
 		return user;
 	}
+
 
 }
