@@ -1,5 +1,3 @@
-
-
 let index = {
 		init: function(){
 			$("#btn-save").on("click",()=>{ 
@@ -12,7 +10,7 @@ let index = {
 				        	async: false,
 				            type : 'POST',
 				            data : username,
-				            url : "/blog/user/idCheck",
+				            url : "/auth/idCheck",
 				            contentType: "application/json; charset=UTF-8",
 				            success : function(data) {
 				                if (data == "S") {
@@ -42,7 +40,7 @@ let index = {
 				        	async: false,
 				            type : 'POST',
 				            data : email,
-				            url : "/blog/user/emailCheck",
+				            url : "/auth/emailCheck",
 				            contentType: "application/json; charset=UTF-8",
 				            success : function(data) {
 				                if (data == "S") {
@@ -70,18 +68,17 @@ let index = {
 			//データ→json insert
 			$.ajax({
 				type: "POST",
-				url: "/blog/api/user",
+				url: "/auth/join",
 				data: JSON.stringify(data), // // http body
 				contentType: "application/json; charset=utf-8", // body data type
 				dataType:"json" // javascript 文字列
 			}).done(function(resp){
 				alert("会員加入が完了しました。");
-				location.href="/blog";
+				location.href="/";
 			}).fail(function(error){
-				alert(JSON.stringify(error))
+				return false;
 			});
 		}
 	}
 
 	index.init();
-

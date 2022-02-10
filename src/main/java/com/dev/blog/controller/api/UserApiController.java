@@ -2,6 +2,9 @@ package com.dev.blog.controller.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.transaction.UnexpectedRollbackException;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,12 +20,10 @@ public class UserApiController {
 	@Autowired
 	private UserService userService;
 
-	@PostMapping("/api/user")
+	@PostMapping("/auth/join")
 	public ResponseDto<Integer> save(@RequestBody User user) {
 		System.out.println("userApiController:save ");
-		user.setPrivilege(Privilege.USER);
-		int result = userService.save(user);
+		userService.save(user);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
-
 }
