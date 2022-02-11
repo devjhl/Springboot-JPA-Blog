@@ -8,7 +8,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.dev.blog.model.User;
 
+import lombok.Getter;
+
 // security sessionにSave
+@Getter
 public class PrincipalDetail implements UserDetails{
 	private User user;
 	

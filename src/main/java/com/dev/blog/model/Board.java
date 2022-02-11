@@ -37,8 +37,9 @@ public class Board {
 	private String title;
 	@Lob // 大容量データ
 	private String content;
-	@ColumnDefault("0")
+	
 	private int count;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="userId")
 	private User user;
