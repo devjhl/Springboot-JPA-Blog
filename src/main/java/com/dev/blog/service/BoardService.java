@@ -1,8 +1,5 @@
 package com.dev.blog.service;
 
-
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,8 +22,30 @@ public class BoardService {
 		board.setUser(user);
 		boardRepository.save(board);
 	}
-	
+	@Transactional(readOnly = true)
 	public Page<Board> boardlist(Pageable pageable) {
 		return boardRepository.findAll(pageable);
+	}
+	@Transactional(readOnly = true)
+	public Board detailBoard(int id) {
+		return boardRepository.findById(id)
+				.orElseThrow(()->{
+					return new IllegalArgumentException("該当投稿がありません");
+				});
+	}
+	
+	@Transactional
+	public void deleteById(int id) {
+		boardRepository.deleteById(id);
+	}
+	
+	@Transactional
+	public void update(int id, Board requestBoard) {
+		Board board = boardRepository.findById(id)
+				.orElseThrow(()->{
+					return new IllegalArgumentException("該当投稿がありません");
+				}); 
+		board.setTitle(requestBoard.getTitle());
+		board.setContent(requestBoard.getContent());
 	}
 }

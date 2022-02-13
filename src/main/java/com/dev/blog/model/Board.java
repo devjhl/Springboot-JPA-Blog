@@ -47,8 +47,4 @@ public class Board {
 	private Timestamp createDate;
 	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER) // fk X
 	private List<Reply> reply;
-	@ColumnDefault("1")
-	private int is_deleted;
-	private String deleted_title;
-	private String deleted_content;
 }

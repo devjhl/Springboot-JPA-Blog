@@ -58,6 +58,7 @@ let index = {
 					this.save();
 				}
 			});
+			
 		},  save: function(){
 			let data = {
 					username:$("#username").val(),

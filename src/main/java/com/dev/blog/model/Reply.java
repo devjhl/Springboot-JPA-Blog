@@ -37,7 +37,4 @@ public class Reply {
 	private User user;
 	@CreationTimestamp
 	private Timestamp timestamp;
-	@ColumnDefault("1")
-	private int is_deleted;
-	private String deleted_content;
 }

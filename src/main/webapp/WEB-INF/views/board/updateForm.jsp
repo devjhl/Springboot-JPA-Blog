@@ -3,17 +3,18 @@
 <div class="container">
 
 	<form>
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="" id="title">
+		<input type="hidden" id="id" value="${board.id}"/>
+ 		<div class="form-group">
+			<input value="${board.title}" type="text"  class="form-control" placeholder="" id="title">
 			<span class="titleChk"></span>
 		</div>
 
 		<div class="form-group">
-			<textarea class="form-control summernote" rows="5" id="content"></textarea>
+			<textarea class="form-control summernote" rows="5" id="content">${board.content}</textarea>
 		</div>
 	</form>
 	<a href="/" role="button" class="btn btn-secondary">キャンセル</a>
-	<button id="btn-save" class="btn btn-primary">投稿</button>
+	<button id="btn-update" class="btn btn-primary">編集</button>
 
 </div>
 <script>
