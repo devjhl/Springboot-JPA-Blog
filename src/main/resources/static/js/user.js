@@ -133,7 +133,7 @@ let index = {
 				contentType: "application/json; charset=utf-8", // body data type
 				dataType:"json" // javascript 文字列
 			}).done(function(resp){
-				alert("会員情報が編集しました。");
+				alert("会員情報が変更しました。");
 				location.href="/";
 			}).fail(function(error){
 				return false;

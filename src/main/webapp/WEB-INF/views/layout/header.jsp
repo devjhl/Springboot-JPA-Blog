@@ -40,7 +40,7 @@
 						<c:if test="${principal.user.privilege=='ADMIN'}">
 						<li class="nav-item"><a class="nav-link" href="/board/saveForm">投稿</a></li>
 						</c:if>
-						<li class="nav-item"><a class="nav-link" href="/user/updateForm">会員情報編集</a></li>
+						<li class="nav-item"><a class="nav-link" href="/user/updateForm">会員情報変更</a></li>
 					</ul>
 				</c:otherwise>
 			</c:choose>

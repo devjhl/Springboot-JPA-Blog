@@ -23,7 +23,7 @@
 			<span class="emailChk"></span>
 		</div>
 	</form>
-	<button id="btn-update" class="btn btn-primary">編集</button>
+	<button id="btn-update" class="btn btn-primary">変更</button>
 
 
 </div>
