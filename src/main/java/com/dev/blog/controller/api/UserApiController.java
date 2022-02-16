@@ -32,7 +32,6 @@ public class UserApiController {
 
 	@PostMapping("/auth/join")
 	public ResponseDto<Integer> save(@RequestBody User user) {
-		System.out.println("userApiController:save ");
 		userService.save(user);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}

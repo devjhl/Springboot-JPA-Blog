@@ -1,6 +1,13 @@
 let index = {
 		init: function(){
-			$("#btn-save").on("click",()=>{ 
+			$("#btn-save").on("click", ()=>{ 
+				this.save();
+			});
+			$("#btn-update").on("click", ()=>{ 
+				this.update();
+			});
+		},
+		save: function(){
 				if($("#username").val() =='') {
 					$(".usernameChk").text("IDを入力してください。");
 					$(".usernameChk").css("color", "red");
@@ -36,6 +43,7 @@ let index = {
 				}else if($("#email").val() !=''){
 					var email =  $("#email").val();
 					$(".emailChk").text("");
+					if($("#username").val() !='' && $("#password").val() !=''&& $("#email").val() !='') {
 					 $.ajax({
 				        	async: false,
 				            type : 'POST',
@@ -54,14 +62,34 @@ let index = {
 								alert("network error occur");
 							}
 				        });
-				}if($("#username").val() !='' && $("#password").val() !=''&& $("#email").val() !='') {
-					this.save();
 				}
+				}
+			let data = {
+					username:$("#username").val(),
+					password:$("#password").val(),
+					email:$("#email").val()
+			};
+			// 会員加入
+			// データ→json insert
+			$.ajax({
+				type: "POST",
+				url: "/auth/join",
+				data: JSON.stringify(data), // // http body
+				contentType: "application/json; charset=utf-8", // body data
+																// type
+				dataType:"json" // javascript 文字列
+			}).done(function(resp){
+				if(resp.status == 500) {
+					alert("会員加入に失敗しました。");	
+				}else {
+					alert("会員加入が完了しました。");
+					location.href="/";
+				}
+			}).fail(function(error){
+				return false;
 			});
-			
 		},
-		init: function(){
-			$("#btn-update").on("click",()=>{ 
+		update: function(){
 				if($("#password").val() =='') {
 					$(".pwChk").text("passwordを入力してください。");
 					$(".pwChk").css("color", "red");			
@@ -91,47 +119,20 @@ let index = {
 								alert("network error occur");
 							}
 				        });
-				}if($("#password").val() !=''&& $("#email").val() !='') {
-					this.update();
 				}
-			});
-			
-		},
-		save: function(){
-			let data = {
-					username:$("#username").val(),
-					password:$("#password").val(),
-					email:$("#email").val()
-			};
-			//会員加入 
-			//データ→json insert
-			$.ajax({
-				type: "POST",
-				url: "/auth/join",
-				data: JSON.stringify(data), // // http body
-				contentType: "application/json; charset=utf-8", // body data type
-				dataType:"json" // javascript 文字列
-			}).done(function(resp){
-				alert("会員加入が完了しました。");
-				location.href="/";
-			}).fail(function(error){
-				return false;
-			});
-		},
-		update: function(){
 			let data = {
 					id:$("#id").val(),
 					username:$("#username").val(),
 					password:$("#password").val(),
 					email:$("#email").val()
 			};
-			//会員加入 
-			//データ→json insert
+			if($("#password").val() !=''&& $("#email").val() !='') {
 			$.ajax({
 				type: "PUT",
 				url: "/user",
 				data: JSON.stringify(data), // // http body
-				contentType: "application/json; charset=utf-8", // body data type
+				contentType: "application/json; charset=utf-8", // body data
+																// type
 				dataType:"json" // javascript 文字列
 			}).done(function(resp){
 				alert("会員情報が変更しました。");
@@ -139,6 +140,7 @@ let index = {
 			}).fail(function(error){
 				return false;
 			});
+		}
 		}
 	}
 
