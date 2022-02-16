@@ -1,9 +1,6 @@
 package com.dev.blog.service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -59,6 +56,5 @@ public class UserService {
 
 		persistance.setPassword(encPasswoard);
 		persistance.setEmail(user.getEmail());
-
 	}
 }
