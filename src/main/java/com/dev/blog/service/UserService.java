@@ -17,7 +17,7 @@ import com.dev.blog.repository.UserRepository;
 //Bean 登録(Ioc)
 @Service
 public class UserService {
-	
+
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired
@@ -46,4 +46,19 @@ public class UserService {
 		return user;
 	}
 
+	@Transactional
+	public void updateUser(User user) {
+		System.out.println("service" + user);
+
+		User persistance = userRepository.findById(user.getId()).orElseThrow(() -> {
+			return new IllegalArgumentException("会員検索失敗");
+		});
+
+		String rawPassword = user.getPassword();
+		String encPasswoard = encode.encode(rawPassword);
+
+		persistance.setPassword(encPasswoard);
+		persistance.setEmail(user.getEmail());
+
+	}
 }

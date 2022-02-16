@@ -34,7 +34,7 @@ let index = {
 				contentType: "application/json; charset=utf-8",
 				dataType: "json"
 			}).done(function(resp){
-				alert("投稿が完了しました。.");
+				alert("投稿が完了しました。");
 				location.href = "/";
 			}).fail(function(error){
 				alert(JSON.stringify(error));
@@ -47,7 +47,7 @@ let index = {
 				url: "/api/board/"+id,
 				dataType: "json"
 			}).done(function(resp){
-				alert("削除が完了しました。.");
+				alert("削除が完了しました。");
 				location.href = "/";
 			}).fail(function(error){
 				alert(JSON.stringify(error));

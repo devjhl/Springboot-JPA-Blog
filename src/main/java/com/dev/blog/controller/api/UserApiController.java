@@ -6,6 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.UnexpectedRollbackException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,4 +27,12 @@ public class UserApiController {
 		userService.save(user);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
+	
+	@PutMapping("/user")
+	public ResponseDto<Integer> update(@RequestBody User user) {
+		System.out.println("ApiController" + user);
+		userService.updateUser(user);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+	}
+	
 }

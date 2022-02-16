@@ -53,5 +53,10 @@ public class UserController {
 			}
 		return checkRst;
 	}
+	
+	@GetMapping("/user/updateForm")
+	public String updateForm() {
+		return "user/updateForm";
+	}
 	 
 }
