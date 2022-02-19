@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dev.blog.config.auth.PrincipalDetail;
 import com.dev.blog.dto.ResponseDto;
-import com.dev.blog.model.Privilege;
 import com.dev.blog.model.User;
 import com.dev.blog.service.UserService;
 

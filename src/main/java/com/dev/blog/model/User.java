@@ -1,6 +1,9 @@
 package com.dev.blog.model;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,25 +24,30 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
 public class User {
-	
-	@Id //Primary Key
+
+	@Id // Primary Key
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; // auto_increment
-	@Column(nullable = false , length = 30, unique = true)
+	@Column(nullable = false, length = 30, unique = true)
 	private String username;
-	@Column(nullable = false , length = 100)
+	@Column(nullable = false, length = 100)
 	private String password;
-	@Column(nullable = false , length = 50, unique = true)
+	@Column(nullable = false, length = 50, unique = true)
 	private String email;
-	@Enumerated(EnumType.STRING)
-	private Privilege privilege; 
+	private String role;
 	@CreationTimestamp // 時間自動入力
 	private Timestamp createDate;
+
+	public List<String> getRoleList() {
+		if (this.role.length() > 0) {
+			return Arrays.asList(this.role.split(","));
+		}
+		return new ArrayList<>();
+	}
 }

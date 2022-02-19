@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.dev.blog.model.Board;
 import com.dev.blog.service.BoardService;
 
 @Controller
@@ -25,7 +26,10 @@ public class BoardController {
 	
 	@GetMapping("/board/{id}")
 	public String findBydId(@PathVariable int id, Model model) {
-		model.addAttribute("board",boardservice.detailBoard(id));
+		
+		Board read = boardservice.detailBoard(id);
+		model.addAttribute("board",read);
+		
 		return "board/detail";
 	}
 	

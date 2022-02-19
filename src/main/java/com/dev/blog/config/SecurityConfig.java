@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.dev.blog.config.auth.PrincipalDetail;
 import com.dev.blog.config.auth.PrincipalDetailService;
 // Spring Containerでオブジェクトを完了できる。
 @Configuration
@@ -45,7 +44,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		httpSecurity
 			.csrf().disable() //testする時はcsrfトークンを非活性する
 			.authorizeRequests() //request
-			.antMatchers("/","/auth/**", "/js/**", "/css", "/image/**") //誰でもOK
+			.antMatchers("/board/saveForm")
+			.access("hasRole('ROLE_ADMIN')")
+			.antMatchers("/","/board/**","/auth/**", "/js/**", "/css", "/image/**","/error/**") //誰でもOK
 			.permitAll() 
 			.anyRequest()
 			.authenticated()

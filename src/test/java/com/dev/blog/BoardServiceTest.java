@@ -79,7 +79,6 @@ class BoardServiceTest {
     	Board board = new Board();
     	board.setTitle(title);
     	board.setContent(content);
-    	board.setCount(0);
     	em.persist(board);
     	return board;
     }

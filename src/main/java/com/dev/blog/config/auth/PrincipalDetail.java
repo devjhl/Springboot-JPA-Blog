@@ -12,9 +12,9 @@ import lombok.Getter;
 
 // security sessionにSave
 @Getter
-public class PrincipalDetail implements UserDetails{
+public class PrincipalDetail implements UserDetails {
 	private User user;
-	
+
 	public PrincipalDetail(User user) {
 		this.user = user;
 	}
@@ -48,13 +48,16 @@ public class PrincipalDetail implements UserDetails{
 	public boolean isEnabled() {
 		return true;
 	}
-	//権限
+
+	// 権限
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		
-		Collection<GrantedAuthority> collectors = new ArrayList<>();
-		collectors.add(()-> {return "PRIVILEAGE_"+user.getPrivilege();});
-		
-		return collectors;
+		Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		user.getRoleList().forEach(r -> {
+			authorities.add(() -> {
+				return r;
+			});
+		});
+		return authorities;
 	}
 }
