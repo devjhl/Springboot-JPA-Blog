@@ -1,9 +1,9 @@
 let index = {
 		init: function(){
 			$("#btn-save").on("click", ()=>{ 
-				if($("#username").val() =='' || $("#password").val() =='' || $("#email").val() =='') {
+				if($("#username").val() =='' || $("#password").val() =='' || $("#email").val() =='' ) {
 					this.check();
-				}else if($("#username").val() !='' || $("#password").val() !='' || $("#email").val() !=''){
+				}else if($("#username").val() !='' || $("#password").val() !='' || $("#email").val() !='' ){
 					this.check();
 					this.save();
 				}
@@ -18,6 +18,20 @@ let index = {
 				}
 				
 			});
+			$("#btn-login").on("click", ()=>{
+				if($("#username").val() =='' && $("#password").val() =='') {
+					alert("IDとパスワードを入力してください。");
+					return false;
+				}
+				else if($("#username").val() =='') {
+					alert("IDを入力してください。");
+					return false;
+				}else if($("#password").val() =='') {
+					alert("Passwordを入力してください。");
+					return false;
+				}
+			})
+			
 		},
 		
 		check: function() {
@@ -77,6 +91,7 @@ let index = {
 			        });
 			}
 		},
+		
 		save: function(){
 			let data = {
 					username:$("#username").val(),
