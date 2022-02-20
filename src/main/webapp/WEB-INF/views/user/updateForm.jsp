@@ -8,7 +8,6 @@
 		<div class="form-group">
 			<label for="username">ID</label> 
 			<input type="text" value="${principal.user.username }" class="form-control" placeholder="" id="username" readonly="readonly">
-			<span class="usernameChk"></span>
 		</div>
 
 		<div class="form-group">

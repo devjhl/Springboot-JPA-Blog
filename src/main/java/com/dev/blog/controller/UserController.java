@@ -47,10 +47,10 @@ public class UserController {
 		String checkRst;
 		User emailCnt =  userService.emailCheck(email);
 		if(emailCnt != null) {//あり
-			checkRst = "F"; 
+			checkRst = "F2"; 
 			}
 		else { // なし
-			checkRst = "S"; 
+			checkRst = "S2"; 
 			}
 		return checkRst;
 	}

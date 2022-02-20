@@ -1,13 +1,12 @@
 let index = {
 		init: function(){
 			$("#btn-save").on("click", ()=>{ 
-				if($("#title").val() =='') {
-					$(".titleChk").text("タイトルを入力してください。");
-					$(".titleChk").css("color", "red");
+				if($("#title").val() =='' || $("#content").val() == '') {
+					alert("入力してください。");
 				}else {
-					$(".titleChk").text("");
+					this.save();
 				}
-				this.save();
+				
 			})
 			$("#btn-delete").on("click", ()=>{ 
 				var res = confirm("削除してもいいですか？");
@@ -88,7 +87,7 @@ let index = {
 				contentType: "application/json; charset=utf-8",
 				dataType: "json"
 			}).done(function(resp){
-				alert("コメント作成が完了しました。");
+				alert("コメントを作成しました。");
 				location.href = `/board/${data.boardId}`;
 			}).fail(function(error){
 				alert(JSON.stringify(error));
@@ -100,7 +99,7 @@ let index = {
 				url: `/api/board/${boardId}/reply/${replyId}`,
 				dataType: "json"
 			}).done(function(resp){
-				alert("コメント削除が完了しました。");
+				alert("コメントを削除しました。");
 				location.href = `/board/${boardId}`;
 			}).fail(function(error){
 				alert(JSON.stringify(error));
