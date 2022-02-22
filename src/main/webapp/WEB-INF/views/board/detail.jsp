@@ -23,7 +23,7 @@
 			<c:choose>
 				<c:when test="${empty principal}">
 					<div class="card-body">
-						<textarea id="reply-content" class="form-control" rows="1"　readonly="readonly" placeholder="ユーザーのみコメント作成ができます。"></textarea>
+						<textarea id="reply-content" class="form-control" rows="1" placeholder="ユーザーのみコメント作成ができます。" readonly="readonly"></textarea>
 					</div>
 				</c:when>
 				<c:otherwise>
