@@ -37,10 +37,11 @@
 				<c:otherwise>
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link" href="/logout">ログアウト</a></li>
+						<li class="nav-item"><a class="nav-link" href="/user/updateForm">会員情報</a></li>
 						<c:if test="${principal.user.role=='ROLE_ADMIN'}">
 						<li class="nav-item"><a class="nav-link" href="/board/saveForm">投稿</a></li>
 						</c:if>
-						<li class="nav-item"><a class="nav-link" href="/user/updateForm">会員情報</a></li>
+						
 					</ul>
 				</c:otherwise>
 			</c:choose>
